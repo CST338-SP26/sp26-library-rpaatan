@@ -2,7 +2,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Book {
-    // Constant fields are indexed starting from 0.
     public static final int ISBN_ = 0;
     public static final int TITLE_ = 1;
     public static final int SUBJECT_ = 2;
