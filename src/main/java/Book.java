@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Book {
+   // Constant Fields (static final fields)
     public static final int ISBN_ = 0;
     public static final int TITLE_ = 1;
     public static final int SUBJECT_ = 2;
