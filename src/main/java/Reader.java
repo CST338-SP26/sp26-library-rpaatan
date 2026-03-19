@@ -66,22 +66,30 @@ public class Reader {
 
     // Methods
     public Code addBook(Book book) {
-        if(books.contains(book)) {
-            return Code.BOOK_ALREADY_CHECKED_OUT_ERROR;
+        try {
+            if (books.contains(book)) {
+                return Code.BOOK_ALREADY_CHECKED_OUT_ERROR;
+            }
+        } catch (NullPointerException e) {
+            books = new ArrayList<>();
+            // if for some reason, our books list is null we will create an arraylist for it, giving us an empty list of books.
         }
 
         books.add(book);
         return Code.SUCCESS;
     }
 
-    // todo - check over this.
     public Code removeBook(Book book) {
+        if(books == null || books.isEmpty()) {
+            return Code.READER_DOESNT_HAVE_BOOK_ERROR;
+        }
+
         try {
-            if (!books.contains(book)) {
-                return Code.READER_DOESNT_HAVE_BOOK_ERROR;
-            } else {
+            if (books.contains(book)){
                 books.remove(book);
                 return Code.SUCCESS;
+            } else {
+                return Code.READER_DOESNT_HAVE_BOOK_ERROR;
             }
         } catch (Exception e) {
             return Code.READER_COULD_NOT_REMOVE_BOOK_ERROR;
