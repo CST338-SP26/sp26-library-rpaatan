@@ -1,11 +1,9 @@
 import Utilities.Code;
-
 import java.util.HashMap;
 import java.util.Objects;
 
 public class Shelf {
     // Constant Fields
-    // todo: figure out what to intialize the constant fields with.
     public static final int SHELF_NUMBER_ = 0;
     public static final int SUBJECT_ = 0;
 
@@ -18,11 +16,16 @@ public class Shelf {
     // Constructors
     public Shelf() {
         // Deprecated constructor, does nothing. To be removed in future versions.
+
+        this.books = new HashMap<>();
+        // Still need to initialize the HashMap to reduce errors.
     }
 
     public Shelf(int shelfNumber, String subject) {
         this.shelfNumber = shelfNumber;
         this.subject = subject;
+
+        this.books = new HashMap<>();
     }
 
     // Getters & Setters
@@ -90,6 +93,9 @@ public class Shelf {
             return Code.BOOK_NOT_IN_INVENTORY_ERROR;
         } else if (books.containsKey(book) && books.get(book) > 0) {
             System.out.println(book.getTitle() + " successfully removed from shelf " + this.subject);
+            books.put(book, books.get(book) - 1);
+
+            return Code.SUCCESS;
         }
 
         // If somehow we get outside the bounds of the code, then return this error.
@@ -98,7 +104,7 @@ public class Shelf {
     }
 
     public String listBooks() {
-        StringBuilder sb = new StringBuilder(books.size() + "on shelf: " + toString());
+        StringBuilder sb = new StringBuilder(books.size() + " books on shelf: " + toString());
 
         for(Book book : books.keySet()) {
             sb.append("\n" + book.getTitle() + " by " + book.getAuthor() + " " + book.getISBN() + books.get(book));
