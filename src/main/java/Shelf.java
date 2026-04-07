@@ -106,7 +106,7 @@ public class Shelf {
         StringBuilder sb = new StringBuilder(books.size() + " books on shelf: " + toString());
 
         for(Book book : books.keySet()) {
-            sb.append("\n" + book.getTitle() + " by " + book.getAuthor() + " " + book.getISBN() + books.get(book));
+            sb.append("\n").append(book.getTitle()).append(" by ").append(book.getAuthor()).append(" ").append(book.getISBN()).append(books.get(book));
             // should be the title, plus the author name, plus the book ISBN, and then the amount of books that are available.
             // books.get(book) should access the value connected to the key
         }
