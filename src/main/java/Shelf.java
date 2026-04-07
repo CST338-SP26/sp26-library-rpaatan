@@ -75,7 +75,6 @@ public class Shelf {
 
             books.put(book, 1);
             System.out.println(book.getTitle() + " added to shelf" + this.toString());
-            // todo: could cause an error, this.toString is greyed out.
 
             return Code.SUCCESS;
         }
@@ -99,7 +98,7 @@ public class Shelf {
         }
 
         // If somehow we get outside the bounds of the code, then return this error.
-        System.out.println("Other error occured trying to remove " + book.getTitle());
+        System.out.println("Other error occurred trying to remove " + book.getTitle());
         return Code.BOOK_NOT_IN_INVENTORY_ERROR;
     }
 
